@@ -8,7 +8,9 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Add three items where the item with the highest priority is last.
     // Expected Result: Dequeue should return the item with the highest priority.
-    // Defect(s) Found: The original Dequeue loop did not check the last item. 
+    // Defect(s) Found: The loop in Dequeue() did not check the last item in the queue,
+    // so it could fail to return the item with the highest priority when that item
+    // was at the end of the queue. 
     public void TestPriorityQueue_1()
     {
         var priorityQueue = new PriorityQueue();
@@ -24,7 +26,7 @@ public class PriorityQueueTests
     [TestMethod]
      // Scenario: Add an item to the queue and dequeue it, then dequeue again.
     // Expected Result: The first item is returned and removed, and the second dequeue throws an exception.
-    // Defect(s) Found: The original Dequeue method returned the item but did not remove it from the queue. 
+    // Defect(s) Found: The original Dequeue method returned the item but did not remove it from the queue. therefore it could return the the same item.
     public void TestPriorityQueue_2()
     {
         var priorityQueue = new PriorityQueue();
